@@ -17,17 +17,13 @@ function App() {
   }
 
   function handleSubmit(event) {
-
     event.preventDefault();
-
-    console.log(book);
 
     axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey + "&maxResults=40")
     .then(data => {
       setResult(data.data.items)
       console.log(data.data.items)
     })
-
   }
 
   return (
@@ -36,8 +32,8 @@ function App() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
-            onChange={handleSubmit}
             type="text"
+            onChange={handleChange}
             className="form-control mt-10"
             placeholder="Search for books"
             autoComplete="off"
@@ -46,7 +42,9 @@ function App() {
         <button type="submit" className="btn btn-danger">Search</button>
       </form>
       {result.map(book => (
+        <a href={book.volumeInfo.previewLink}>
         <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title}/>
+        </a>
       ))}
     </div>
   );
