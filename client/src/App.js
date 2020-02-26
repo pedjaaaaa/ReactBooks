@@ -28,7 +28,8 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Book Search App</h1>
+      <h1>(React) Google Book Search</h1>
+        <p>Search for and Save Books of Interest</p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
